@@ -10,7 +10,7 @@ services:
     container_name: MySQL_tetris
     restart: unless-stopped
     ports:
-      - 3306:3306
+      - 3406:3306
     command: >-
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
@@ -32,7 +32,7 @@ services:
     container_name: phpmyadmin_tetris
     restart: unless-stopped
     ports:
-      - 8079:80
+      - 8279:80
     environment:
       PMA_HOSTS: db
       PMA_USER: app
