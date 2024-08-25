@@ -1,16 +1,17 @@
-FROM node:19-alpine
+# Verwende ein offizielles OpenJDK-Image als Basis
+FROM openjdk:18-jdk-slim
 
-ENV NODE_ENV=prod
-ENV HOST_ORIGIN = "https://mythicaltable.top"
-
+# Setze das Arbeitsverzeichnis
 WORKDIR /app
 
-COPY package.json ./
+# Kopiere die JAR-Datei in das Docker-Image
+COPY target/fh-tetris-0.0.1-SNAPSHOT.jar app.jar
 
-RUN npm install
+# Stelle sicher, dass die JAR ausführbar ist
+RUN chmod +x app.jar
 
-COPY . .
+# Setze den Port, der geöffnet werden soll
+EXPOSE 8080
 
-EXPOSE 3000
-
-CMD ["npm", "start"]
+# Starten der Anwendung
+ENTRYPOINT ["java", "-jar", "app.jar"]
