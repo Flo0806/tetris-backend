@@ -4,36 +4,35 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "scores") // Name der Tabelle in der Datenbank
+@Table(name = "scores") // Name of the table in the database
 public class Score {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatische Generierung der ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto generated id
     private Long id;
 
-    @Column(name = "player_name", nullable = false) // Name des Spielers, darf nicht null sein
+    @Column(name = "player_name", nullable = false)
     private String playerName;
 
-    @Column(nullable = false) // Punktzahl des Spielers, darf nicht null sein
+    @Column(nullable = false)
     private int score;
 
-    @Column(nullable = false) // Level des Spielers, darf nicht null sein
+    @Column(nullable = false)
     private int level;
 
-    @Column(name = "date_time", nullable = false) // Zeitpunkt, wann der Score erstellt wurde
+    @Column(name = "date_time", nullable = false)
     private LocalDateTime dateTime;
 
-    // Standard-Konstruktor erforderlich für JPA
+    // Standard constructor
     public Score() {
-        this.dateTime = LocalDateTime.now(); // Initialisiere das Datum auf das aktuelle Datum
+        this.dateTime = LocalDateTime.now();
     }
 
-    // Konstruktor, der alle Felder außer ID und Datum initialisiert
     public Score(String playerName, int score, int level) {
         this.playerName = playerName;
         this.score = score;
         this.level = level;
-        this.dateTime = LocalDateTime.now(); // Setzt das aktuelle Datum
+        this.dateTime = LocalDateTime.now();
     }
 
     // Getter und Setter
