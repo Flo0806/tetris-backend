@@ -44,7 +44,7 @@ services:
   backend:
     build: .
     ports:
-      - "8080:8080"
+      - "9321:9321"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/tetris
       SPRING_DATASOURCE_USERNAME: app
